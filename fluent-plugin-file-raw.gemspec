@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["takahiro.nakayama"]
   spec.email         = ["civitaspo@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
+  spec.summary       = %q{Fluentd plugin to output raw data to files.}
   spec.description   = spec.summary
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/civitaspo/fluent-plugin-file-raw"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split("\n")
