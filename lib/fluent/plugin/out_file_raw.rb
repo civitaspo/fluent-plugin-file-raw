@@ -1,4 +1,3 @@
-require "fluent/plugin/file/raw/version"
 
 module Fluent
   class FileRawOutput < Output
@@ -12,9 +11,10 @@ module Fluent
       super
     end
 
-    config_param :output_path_prefix, :string, :default => '/tmp/fluent_out_file_raw'
-    config_param :bulk_tag_prefix, :string, :default => ''
-    config_param :output_delimiter, :string, :default => ''
+    config_param :output_path,        :string, :default => '/tmp/'
+    config_param :output_file_prefix, :string, :default => 'fluent_out_file_raw'
+    config_param :bulk_tag_prefix,    :string, :default => ''
+    config_param :output_delimiter,   :string, :default => ''
     AVAILABLE_DELIMITERS =
       {
         'TAB' => "\t",
@@ -34,9 +34,10 @@ module Fluent
     def configure(conf)
       super
 
-      unless Dir.exists?(@output_path_prefix)
-        raise Fluent::ConfigError, "out_file_raw: `output_path_prefix` must be existed on this host."
+      unless Dir.exists?(@output_path)
+        raise Fluent::ConfigError, "out_file_raw: `output_path` must be existed on this host."
       end
+      @output_path_prefix = "#{@output_path}/#{@output_file_prefix}"
 
       unless @bulk_tag_prefix.empty?
         log.info "out_file_raw: bulk output mode ignores config `output_delimiter`."
@@ -102,7 +103,7 @@ module Fluent
 
     def bulk?(tag)
       if @bulk_tag_prefix
-        %r{^#{@bulk_tag_prefix}$} === tag.split('.')[0]
+        %r{^#{@bulk_tag_prefix}$} === tag.to_s.split('.')[0]
       else
         false
       end
