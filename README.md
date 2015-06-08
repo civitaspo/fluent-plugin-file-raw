@@ -19,9 +19,18 @@ Or install it yourself as:
 
     $ gem install fluent-plugin-file-raw
 
-## Usage
+## Configuration
 
-TODO: Write usage instructions here
+example:
+
+```
+<match foo.**>
+  type file_raw
+  output_path /tmp/out
+  output_file_prefix outfile
+  output_file_prefix TAB
+</match>
+```
 
 ## ChangeLog
 
