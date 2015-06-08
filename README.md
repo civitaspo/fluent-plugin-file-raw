@@ -1,5 +1,6 @@
 # fluent-plugin-file-raw
 [![Build Status](https://secure.travis-ci.org/civitaspo/fluent-plugin-file-raw.png?branch=master)](http://travis-ci.org/civitaspo/fluent-plugin-file-raw)
+
 Fluentd plugin to output raw data to files.
 
 ## Installation
