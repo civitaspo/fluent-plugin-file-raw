@@ -28,9 +28,25 @@ example:
   type file_raw
   output_path /tmp/out
   output_file_prefix outfile
-  output_file_prefix TAB
+  output_delimiter TAB
 </match>
 ```
+
+output:
+
+/tmp/out/outfile.%Y-%m-%d-%H.xxxxxxxxxxx
+
+- %Y-%m-%d-%H: executed time
+- xxxxxxxxxxx: 32 randam letters
+
+#### parameter detail
+
+|param|validation|explanation|
+|:--|:--|:--|
+|output_path|string|require the existence of the path.|
+|output_file_prefix|string||
+|bulk_tag_prefix|string|if the option is enabled, the output_delimiter option is disabled.|
+|output_delimiter|'',TAB,COMMA|the delimiters except left ones are not permitted.|
 
 ## ChangeLog
 
